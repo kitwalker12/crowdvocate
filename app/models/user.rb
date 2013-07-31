@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :pledges
   has_many :comments
   has_many :events
-  has_many :projects, :through => :pledges
+  has_many :funded_projects, :through => :pledges, :source => :project
   has_many :projects
 end
