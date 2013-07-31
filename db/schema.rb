@@ -11,25 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130731071822) do
+ActiveRecord::Schema.define(version: 20130731074531) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "event_id"
   end
+
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "events", force: true do |t|
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "project_id"
   end
+
+  add_index "events", ["project_id"], name: "index_events_on_project_id"
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "pledges", force: true do |t|
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "user_id"
   end
+
+  add_index "pledges", ["project_id"], name: "index_pledges_on_project_id"
+  add_index "pledges", ["user_id"], name: "index_pledges_on_user_id"
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -40,7 +55,10 @@ ActiveRecord::Schema.define(version: 20130731071822) do
     t.datetime "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
