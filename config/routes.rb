@@ -1,8 +1,11 @@
 Crowdvocate::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   devise_for :users
-  root :to => "pages#home"
-  get "pages/home"
+  ActiveAdmin.routes(self)
   match "/admin" => "admin/dashboard#index", via: :get
+
+  get "pages/home"
+  get "pitch/index"
+
+  root :to => "pages#home"
 end
