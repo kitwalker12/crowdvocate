@@ -1,0 +1,13 @@
+<%= semantic_form_for @project do |f| %>
+  <%= f.inputs :name => "Pitch Details" do %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :image %>
+    <%= f.input :deadline %>
+    <%= f.input :goal %>
+    <%= f.input :body %>
+    <%= f.input :published %>
+    <%= f.input :published_at %>
+  <% end %>
+    <%= f.actions %>
+<% end %>

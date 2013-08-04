@@ -39,6 +39,10 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 
 gem 'formtastic', github: 'justinfrench/formtastic'
 
+gem 'paperclip', :github => 'thoughtbot/paperclip'
+
+gem 'stringex'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
