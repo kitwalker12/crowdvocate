@@ -5,7 +5,9 @@ Crowdvocate::Application.routes.draw do
   match "/admin" => "admin/dashboard#index", via: :get
 
   get "pages/home"
-  resources :projects
+  resources :projects do
+    resources :events
+  end
 
   root :to => "pages#home"
 end

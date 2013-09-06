@@ -33,6 +33,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project.destroy
+  end
+
   private
     def find_project
       @project = Project.published.find_by_slug!(params[:id].split("/").last)

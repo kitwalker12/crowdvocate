@@ -5,6 +5,20 @@
   <%= @project.description %>
 </div>
 <div>
+  <%= image_tag @project.image.url(:main) %>
+</div>
+<div>
+  <%= @project.goal %>
+</div>
+<div>
+  <%= @project.deadline %>
+</div>
+<div>
   <%= @project.body %>
 </div>
-<%= link_to "Edit Pitch", edit_project_path(@project) %>
+<% if @project.user == current_user %>
+  <%= link_to "Edit Pitch", edit_project_path(@project) %>
+  <%= link_to "Create Event", new_project_event_path(@project) %>
+<% end %>
+<%= link_to "All Events", project_events_path(@project) %>
+<%= link_to "Back", :back %>

@@ -1,0 +1,7 @@
+<div>
+  <%= @event.body %>
+</div>
+<% if @event.user == current_user %>
+  <%= link_to "Edit Event", edit_project_event_path(@project,@event) %>
+<% end %>
+<%= link_to "Back", :back %>

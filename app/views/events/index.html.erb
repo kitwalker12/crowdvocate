@@ -1,0 +1,8 @@
+<% @events.each do |event| %>
+  <%= link_to project_event_path(@project,event) do %>
+    <div>
+      <%= event.body %>
+    </div>
+  <% end %>
+<% end %>
+<%= link_to "Back", :back %>
