@@ -1,24 +1,15 @@
-<div class="row">
-  <div class="span3">
-    <%= link_to "Create a project", new_project_path, :class => 'btn btn-large' %>
-  </div>
-</div>
-<div class="row">
-  <% @projects.each do |project| %>
-    <div class="span3">
-      <a href=<%= project_path(project) %>>
-        <div class="project">
-          <div class="project-image">
-            <%= image_tag project.image.url(:main) %>
-          </div>
-          <div class="project-info">
-            <%= project.name %>
-            <span class="project-description">
-              <%= project.description %>
-            </span>
-          </div>
-        </div>
-      </a>
+
+<%= link_to "Create a project", new_project_path %>
+<% @projects.each do |project| %>
+  <%= link_to project_path(project) do %>
+    <div>
+      <%= image_tag project.image.url(:main) %>
+    </div>
+    <div>
+      <%= project.name %>
+    </div>
+    <div>
+      <%= project.description %>
     </div>
   <% end %>
-</div>
+<% end %>
