@@ -205,6 +205,7 @@ DEPENDENCIES
   inherited_resources!
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-ui-rails
   paperclip!
   rails (= 4.0.0)
   ransack!

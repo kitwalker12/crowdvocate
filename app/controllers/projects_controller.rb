@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.published.where(slug: params[:slug]).all.first
+    @project = Project.published.where(slug: params[:id]).to_a.first
   end
 
   def new
@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
   def create
     params.require(:project).permit!
     @project = Project.new(params[:project])
-    @project.slug = params[:project][:name].gsub('.', ' ').to_url
     @project.user_id = current_user.id
     @project.save
     redirect_to @project

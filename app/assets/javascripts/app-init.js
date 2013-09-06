@@ -18,7 +18,6 @@ window.app.myapp = {};
   var $window = $(window);
 
   $(document).ready(function() {
-    //Other Initializers for plugins
 
   });
 }(jQuery, app.myapp));
