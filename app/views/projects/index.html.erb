@@ -1,7 +1,7 @@
 
 <%= link_to "Create a project", new_project_path %>
 <% @projects.each do |project| %>
-  <%= link_to project_path(project.slug) do %>
+  <%= link_to project_path(project) do %>
     <div>
       <%= image_tag project.image.url(:main) %>
     </div>

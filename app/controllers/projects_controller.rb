@@ -1,13 +1,13 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :find_project, except: [:index, :new, :create]
 
   def index
     @projects = Project.published
   end
 
   def show
-    @project = Project.published.where(slug: params[:id]).to_a.first
   end
 
   def new
@@ -16,9 +16,25 @@ class ProjectsController < ApplicationController
 
   def create
     params.require(:project).permit!
-    @project = Project.new(params[:project])
-    @project.user_id = current_user.id
+    @project = current_user.projects.build(params[:project])
     @project.save
     redirect_to @project
   end
+
+  def edit
+  end
+
+  def update
+    params.require(:project).permit!
+    if @project.update_attributes(params[:project])
+      redirect_to @project
+    else
+      render :edit
+    end
+  end
+
+  private
+    def find_project
+      @project = Project.published.find_by_slug!(params[:id].split("/").last)
+    end
 end
