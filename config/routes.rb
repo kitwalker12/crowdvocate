@@ -6,7 +6,9 @@ Crowdvocate::Application.routes.draw do
 
   get "pages/home"
   resources :projects do
-    resources :events
+    resources :events do
+      resources :comments, only: [:create]
+    end
   end
 
   root :to => "pages#home"

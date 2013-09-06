@@ -4,4 +4,6 @@
 <% if @event.user == current_user %>
   <%= link_to "Edit Event", edit_project_event_path(@project,@event) %>
 <% end %>
+<%= render :partial => "comments" %>
+<%= render :partial => "new_comment" %>
 <%= link_to "Back", :back %>

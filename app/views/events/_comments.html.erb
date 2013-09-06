@@ -1,0 +1,12 @@
+<% if !@event.comments.blank? %>
+  <% for comment in @event.comments %>
+    <div>
+      <%= comment.body %>
+    </div>
+    <div>
+      <%= comment.user.email %>
+    </div>
+  <% end %>
+<% else %>
+
+<% end %>
