@@ -8,7 +8,10 @@
   <%= image_tag @project.image.url(:main) %>
 </div>
 <div>
-  <%= @project.goal %>
+  Goal = <%= @project.goal %>
+</div>
+<div>
+  Raised = <%= @project.raised %>
 </div>
 <div>
   <%= @project.deadline %>
@@ -16,6 +19,7 @@
 <div>
   <%= @project.body %>
 </div>
+<%= render :partial => "new_pledge" %>
 <% if @project.user == current_user %>
   <%= link_to "Edit Pitch", edit_project_path(@project) %>
   <%= link_to "Create Event", new_project_event_path(@project) %>

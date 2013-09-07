@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :pledges
   has_many :events
   has_many :videos
-  has_many :users, :through => :pledges
+  has_many :pledged_users, :through => :pledges, :source => :user
 
   after_initialize :init
 
@@ -25,6 +25,10 @@ class Project < ActiveRecord::Base
 
   def init
     self.published = false if (self.has_attribute? :published) && self.published.nil?
+  end
+
+  def raised
+    self.pledges.to_a.sum(&:amount)
   end
 
 end

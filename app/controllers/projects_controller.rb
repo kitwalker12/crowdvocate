@@ -8,6 +8,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    if @project.pledged_users.include?(current_user)
+      @pledge = @project.pledges.where(:user => current_user).first
+    else
+      @pledge = Pledge.new
+    end
   end
 
   def new

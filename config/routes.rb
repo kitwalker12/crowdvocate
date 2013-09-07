@@ -9,6 +9,7 @@ Crowdvocate::Application.routes.draw do
     resources :events do
       resources :comments, only: [:create]
     end
+    resources :pledges, only: [:create, :update]
   end
 
   root :to => "pages#home"
