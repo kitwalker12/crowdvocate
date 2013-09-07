@@ -5,5 +5,5 @@
   <%= link_to "Edit Event", edit_project_event_path(@project,@event) %>
 <% end %>
 <%= render :partial => "comments" %>
-<%= render :partial => "new_comment" %>
+<%= render :partial => "new_comment" if user_signed_in? %>
 <%= link_to "Back", :back %>

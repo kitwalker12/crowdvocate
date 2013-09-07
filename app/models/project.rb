@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   has_many :videos
   has_many :users, :through => :pledges
 
+  after_initialize :init
+
   has_attached_file :image, :styles => { :main => "300x300>", :thumb => "100x100>" }, :default_url => "http://placehold.it/300x300&text=No+Photo"
 
   validates :slug, uniqueness: true, presence: true
@@ -19,6 +21,10 @@ class Project < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= name.parameterize
+  end
+
+  def init
+    self.published = false if (self.has_attribute? :published) && self.published.nil?
   end
 
 end

@@ -3,7 +3,7 @@
   <li class="<%= 'active' if params[:action] == 'home' %>">
     <%= link_to 'Home', root_path %>
   </li>
-  <li class="<%= 'active' if params[:controller] == 'projects' || 'events' || 'comments' %>">
+  <li class="<%= 'active' if ['projects', 'events', 'comments'].include?(params[:controller]) %>">
     <%= link_to 'Pitch', projects_path %>
   </li>
   <% if !user_signed_in? %>
