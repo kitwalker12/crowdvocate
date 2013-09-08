@@ -19,8 +19,13 @@ class EventsController < ApplicationController
   def create
     params.require(:event).permit!
     @event = @project.events.build(params[:event])
-    current_user.events << @event
-    @event.save
+    if @event.save
+      flash[:notice] = "Successfully created Event"
+      current_user.events << @event
+    else
+      flash[:alert] = "Could not add Event"
+      redirect_to @project and return
+    end
     redirect_to project_event_path(@project, @event)
   end
 

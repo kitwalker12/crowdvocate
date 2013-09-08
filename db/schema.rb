@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130804080410) do
+ActiveRecord::Schema.define(version: 20130908085413) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20130804080410) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "videos", force: true do |t|
-    t.string   "url"
+    t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

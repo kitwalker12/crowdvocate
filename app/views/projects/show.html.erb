@@ -19,7 +19,28 @@
 <div>
   <%= @project.body %>
 </div>
-<%= render :partial => "new_pledge" %>
+<% if !@project.videos.blank? %>
+  <% for video in @project.videos %>
+    <div>
+      <%= raw(video.url) %>
+    </div>
+    <div>
+      Uploaded by <%= video.user.email %>
+    </div>
+    <div>
+      <% if video.user == current_user %>
+        <%= link_to "Edit Video", edit_project_video_path(@project,video) %>
+        <%= link_to "Delete Video", project_video_path(@project,video), :method => 'delete' %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+
+<% end %>
+<% if user_signed_in? %>
+  <%= render :partial => "new_pledge" %>
+  <%= link_to "Add Video", new_project_video_path(@project) %>
+<% end %>
 <% if @project.user == current_user %>
   <%= link_to "Edit Pitch", edit_project_path(@project) %>
   <%= link_to "Create Event", new_project_event_path(@project) %>
