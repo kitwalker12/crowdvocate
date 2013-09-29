@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'paperclip', :github => 'thoughtbot/paperclip'
+gem 'pry-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 # Use sqlite3 as the database for Active Record
@@ -27,7 +28,7 @@ gem 'stringex'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-group :development do
+group :development, :test do
   gem 'disable_assets_logger'
   gem 'webrick', '1.3.1'
 end

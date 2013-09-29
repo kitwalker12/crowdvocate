@@ -19,5 +19,14 @@ module Crowdvocate
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    #Pry
+    silence_warnings do
+      begin
+        require 'pry'
+        IRB = Pry
+      rescue LoadError
+      end
+    end
   end
 end

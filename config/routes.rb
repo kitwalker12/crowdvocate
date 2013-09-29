@@ -10,7 +10,9 @@ Crowdvocate::Application.routes.draw do
       resources :comments, only: [:create]
     end
     resources :pledges, only: [:create, :update]
-    resources :videos
+    resources :videos do
+      resources :votes, only: [:create, :destroy]
+    end
   end
 
   root :to => "pages#home"

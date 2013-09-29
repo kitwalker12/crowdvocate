@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   has_many :funded_projects, :through => :pledges, :source => :project
   has_many :video_projects, :through => :videos, :source => :project
   has_many :voted_projects, :through => :votes, :source => :project
+  has_many :voted_videos, :through => :votes, :source => :video
 end
