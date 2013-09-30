@@ -1,6 +1,6 @@
 <%= semantic_form_for [@project,@event,@comment] do |f| %>
   <%= f.inputs :name => "Add Comment" do %>
-    <%= f.semantic_errors :body %>
+    <%= f.semantic_errors *f.object.errors.keys %>
     <%= f.input :body, :as => :text %>
   <% end %>
   <%= f.actions do %>

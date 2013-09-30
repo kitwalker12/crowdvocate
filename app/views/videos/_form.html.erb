@@ -1,6 +1,6 @@
 <%= semantic_form_for [@project, @video] do |f| %>
   <%= f.inputs :name => "Video Details" do %>
-    <%= f.semantic_errors :url %>
+    <%= f.semantic_errors *f.object.errors.keys %>
     <%= f.input :url %>
   <% end %>
     <%= f.actions :submit, :cancel %>
