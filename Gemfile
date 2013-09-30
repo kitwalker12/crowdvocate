@@ -14,10 +14,12 @@ gem 'jquery-ui-rails'
 gem 'paperclip', :github => 'thoughtbot/paperclip'
 gem 'pry-rails'
 gem 'sass-rails', '~> 4.0.0'
-gem 'sqlite3'
+gem 'pg'
 gem 'sidekiq'
 gem 'stringex'
 gem 'uglifier', '>= 1.3.0'
+
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'debugger'
