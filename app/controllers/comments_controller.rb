@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
       current_user.comments << @comment
     else
       flash[:alert] = "Could not add Comment"
-      redirect_to @project and return
     end
     redirect_to project_event_path(@project, @event)
   end

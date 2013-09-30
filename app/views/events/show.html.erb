@@ -6,4 +6,4 @@
 <% end %>
 <%= render :partial => "comments" %>
 <%= render :partial => "new_comment" if user_signed_in? %>
-<%= link_to "Back", :back %>
+<%= link_to "Back to Pitch", project_path(@project) %>

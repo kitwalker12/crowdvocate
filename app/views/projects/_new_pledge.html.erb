@@ -1,5 +1,6 @@
 <%= semantic_form_for [@project,@pledge] do |f| %>
   <%= f.inputs :name => "Pledge Funds" do %>
+    <%= f.semantic_errors :amount %>
     <%= f.input :amount %>
   <% end %>
   <%= f.actions do %>

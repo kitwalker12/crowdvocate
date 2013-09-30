@@ -28,15 +28,17 @@
       Uploaded by <%= video.user.email %>
     </div>
     <div>
-      <% if video.user == current_user %>
-        <%= link_to "Edit Video", edit_project_video_path(@project,video) %>
-        <%= link_to "Delete Video", project_video_path(@project,video), :method => 'delete' %>
-      <% end %>
-      <% if current_user.voted_videos.include?(video) %>
-        <% vote = video.votes.where(:user => current_user).first %>
-        <%= link_to "Remove Vote", project_video_vote_path(@project, video, vote), :method => :delete %>
-      <% else %>
-        <%= link_to "Upvote", project_video_votes_path(@project, video), :method => :post %>
+      <% if user_signed_in? %>
+        <% if video.user == current_user %>
+          <%= link_to "Edit Video", edit_project_video_path(@project,video) %>
+          <%= link_to "Delete Video", project_video_path(@project,video), :method => 'delete' %>
+        <% end %>
+        <% if current_user.voted_videos.include?(video) %>
+          <% vote = video.votes.where(:user => current_user).first %>
+          <%= link_to "Remove Vote", project_video_vote_path(@project, video, vote), :method => :delete %>
+        <% else %>
+          <%= link_to "Upvote", project_video_votes_path(@project, video), :method => :post %>
+        <% end %>
       <% end %>
     </div>
     <div>
@@ -56,4 +58,4 @@
   <%= link_to "Create Event", new_project_event_path(@project) %>
 <% end %>
 <%= link_to "All Events", project_events_path(@project) %>
-<%= link_to "Back", :back %>
+<%= link_to "Back to Pitches", projects_path %>

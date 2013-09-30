@@ -1,10 +1,16 @@
 <%= semantic_form_for @project do |f| %>
   <%= f.inputs :name => "Pitch Details" do %>
+    <%= f.semantic_errors :name %>
     <%= f.input :name %>
+    <%= f.semantic_errors :description %>
     <%= f.input :description %>
+    <%= f.semantic_errors :image %>
     <%= f.input :image %>
+    <%= f.semantic_errors :deadline %>
     <%= f.input :deadline, :as => :datetime_picker %>
+    <%= f.semantic_errors :goal %>
     <%= f.input :goal %>
+    <%= f.semantic_errors :body %>
     <%= f.input :body %>
   <% end %>
     <%= f.actions :submit, :cancel %>

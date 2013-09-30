@@ -17,11 +17,11 @@ feature "Events" do
     project.save
   end
 
-  describe "modify" do
+  describe "add/modify" do
     context "non-signed in user" do
       it "cannot create event" do
-        visit project_path(project)
-        expect(page).to_not have_content("Create Event")
+        visit new_project_event_path(project)
+        expect(page).to have_content("You need to sign in or sign up before continuing.")
       end
     end
 
@@ -57,6 +57,31 @@ feature "Events" do
         click_button 'Update Event'
         expect(page).to have_content("Changed Event")
       end
+    end
+  end
+
+  describe "Comments" do
+    it "can add comments" do
+      user2 = FactoryGirl.create(:user, :email => "test2@crowdvocate.com")
+      sign_in_user user2
+      event = FactoryGirl.create(:event, :project => project, :user => user)
+      visit project_event_path(project, event)
+      within("#new_comment") do
+        fill_in 'comment_body', :with => "This is a new comment"
+        click_button 'Submit'
+      end
+      expect(page).to have_content("This is a new comment")
+    end
+
+    it "cannot add invalid comment" do
+      user2 = FactoryGirl.create(:user, :email => "test2@crowdvocate.com")
+      sign_in_user user2
+      event = FactoryGirl.create(:event, :project => project, :user => user)
+      visit project_event_path(project, event)
+      within("#new_comment") do
+        click_button 'Submit'
+      end
+      expect(page).to have_content("Could not add Comment")
     end
   end
 end

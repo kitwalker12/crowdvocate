@@ -2,6 +2,7 @@ class VideosController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :find_project
   before_filter :find_video, except: [:index, :new, :create]
+  before_filter :authorize_user, only: [:edit, :update]
 
   def index
   end
@@ -53,5 +54,12 @@ class VideosController < ApplicationController
 
     def find_video
       @video = @project.videos.find(params[:id])
+    end
+
+    def authorize_user
+      if @video.user != current_user
+        flash[:alert] = "You do not have permission to edit this Video!"
+        redirect_to @project and return
+      end
     end
 end
