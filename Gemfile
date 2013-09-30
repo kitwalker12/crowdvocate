@@ -30,7 +30,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '< 1.1.0'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
