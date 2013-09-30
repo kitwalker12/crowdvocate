@@ -3,7 +3,7 @@ ruby '1.9.3'
 
 gem 'rails', '4.0.0'
 
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'formtastic', github: 'justinfrench/formtastic'
