@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :find_project
   before_filter :find_event, except: [:index, :new, :create]
+  before_filter :authorize_user, only: [:new, :edit, :create, :update]
 
   def index
     @events = @project.events
@@ -52,5 +53,12 @@ class EventsController < ApplicationController
 
     def find_event
       @event = @project.events.find(params[:id])
+    end
+
+    def authorize_user
+      if @project.user != current_user
+        flash[:alert] = "You do not have permission to create an event on this Pitch!"
+        redirect_to @project and return
+      end
     end
 end
