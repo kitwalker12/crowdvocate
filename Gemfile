@@ -15,6 +15,7 @@ gem 'paperclip', :github => 'thoughtbot/paperclip'
 gem 'pry-rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'sqlite3'
+gem 'sidekiq'
 gem 'stringex'
 gem 'uglifier', '>= 1.3.0'
 

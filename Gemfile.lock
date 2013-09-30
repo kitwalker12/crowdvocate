@@ -322,6 +322,7 @@ DEPENDENCIES
   rspec-sidekiq
   sass-rails (~> 4.0.0)
   shoulda-matchers
+  sidekiq
   sqlite3
   stringex
   terminal-notifier-guard
