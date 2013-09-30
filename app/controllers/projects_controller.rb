@@ -22,8 +22,14 @@ class ProjectsController < ApplicationController
   def create
     params.require(:project).permit!
     @project = current_user.projects.build(params[:project])
-    @project.save
-    redirect_to @project
+    if @project.save
+      flash[:notice] = "Successfully created Pitch"
+    else
+      flash[:alert] = "Could not save Pitch"
+      redirect_to :back and return
+    end
+    #To be changed to user.projects page
+    redirect_to action: 'index'
   end
 
   def edit
