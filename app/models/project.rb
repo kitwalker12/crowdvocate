@@ -10,6 +10,17 @@ class Project < ActiveRecord::Base
   has_attached_file :image, :styles => { :main => "300x300>", :thumb => "100x100>" }, :default_url => "http://placehold.it/300x300&text=No+Photo"
 
   validates :slug, uniqueness: true, presence: true
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :body, presence: true
+  validates :goal, numericality: { only_integer: true, greater_than: 0 }
+  validate :deadline_cannot_be_in_the_past
+
+  def deadline_cannot_be_in_the_past
+    if deadline.present? && deadline < Time.now
+      errors.add(:deadline, "can't be in the past")
+    end
+  end
 
   before_validation :generate_slug
 
