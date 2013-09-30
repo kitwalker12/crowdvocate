@@ -1,6 +1,9 @@
 Crowdvocate::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "user/registrations", :sessions => "user/sessions" }
+  devise_scope :user do
+    #get 'account(/:id)', :action => 'edit', :controller => 'user/registrations', :as => 'account'
+  end
   ActiveAdmin.routes(self)
   match "/admin" => "admin/dashboard#index", via: :get
 
